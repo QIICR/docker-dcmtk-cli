@@ -1,5 +1,5 @@
 #!/bin/bash
-NAME=DCMTK
+NAME=dcmtk
 CLI_DIR=/usr/src/dcmtk-build/bin
 
 if [ -e $CLI_DIR ]; then
@@ -9,13 +9,13 @@ if [ -e $CLI_DIR ]; then
   requestedCLI=${CLI_DIR}/${1}
 
   if [ $# -lt 1 ]; then
-    echo "Usage: docker run -v<HOST DIRECTORY>:<CONTAINER DIRECTORY> qiicr/docker-dcmtk-cli <dicom3tools tool> <arguments>"
+    echo "Usage: docker run -v<HOST DIRECTORY>:<CONTAINER DIRECTORY> qiicr/docker-${NAME}-cli <${NAME} tool> <arguments>"
     echo "Recognized ${NAME} commands: ${CLIs}"
   else
     if [ -x $requestedCLI ]; then
       $requestedCLI ${@:2}
     else
-      echo "Command not recognized! Recognized dicom3tools commands: ${CLIs}"
+      echo "Command not recognized! Recognized ${NAME} commands: ${CLIs}"
     fi
   fi
 else
