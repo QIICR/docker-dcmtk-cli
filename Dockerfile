@@ -7,7 +7,7 @@ RUN git clone https://github.com/qiicr/docker-dcmtk-cli.git
 RUN git clone git://git.dcmtk.org/dcmtk && \
   mkdir dcmtk-build && \
   cd dcmtk-build && \
-  cmake ../dcmtk && \
+  cmake -DDCMTK_ENABLE_BUILTIN_DICTIONARY:BOOL=ON ../dcmtk && \
   make 
 
 RUN  chmod a+x /usr/src/docker-dcmtk-cli/docker_entry.sh
